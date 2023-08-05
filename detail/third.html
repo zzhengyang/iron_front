@@ -9,7 +9,9 @@
       calWeightBtn.onclick=function ()
       {
         density = document.getElementById("density").value;
-        area = document.getElementById("area").value;
+        diameter = document.getElementById("diameter").value;
+        height = document.getElementById("height").value;
+        const area = (diameter - height) * height;
         len = document.getElementById("len").value;
         var weight = calWeight(len, area, density);
         document.getElementById("volumn").value = calVolumn(len, area);
@@ -32,12 +34,17 @@
 <div>
   <form>
     <div class="input-item">
-    材料密度： <input class="input-text" type="text"  id="density" value="7.85" />
+    材料密度： <input class="input-text" type="text"  id="density" value="0.02491" disabled="disabled"/>
     <div class="unit-text">g/m³</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-      截面积：<input type="text" class="input-text" id="area" placeholder="请输入截面积"/>
+      外径：<input type="text" class="input-text" id="diameter" placeholder="请输入外径"/>
+      <div class="unit-text">m²</div>
+    </div>
+    <div class="link"></div>
+    <div class="input-item">
+      壁厚：<input type="text" class="input-text" id="height" placeholder="请输入壁厚"/>
       <div class="unit-text">m²</div>
     </div>
     <div class="link"></div>

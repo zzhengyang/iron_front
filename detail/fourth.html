@@ -9,7 +9,9 @@
       calWeightBtn.onclick=function ()
       {
         density = document.getElementById("density").value;
-        area = document.getElementById("area").value;
+        width = document.getElementById("width").value;
+        height = document.getElementById("height").value;
+        const area = (width * 4 / 3.14 - height) * height;
         len = document.getElementById("len").value;
         var weight = calWeight(len, area, density);
         document.getElementById("volumn").value = calVolumn(len, area);
@@ -32,25 +34,22 @@
 <div>
   <form>
     <div class="input-item">
-    材料密度： <input class="input-text" type="text"  id="density" value="7.85" />
-    <div class="unit-text">g/m³</div>
+      材料密度： <input class="input-text" type="text"  id="density" value="0.02491" disabled="disabled"/>
+      <div class="unit-text">g/m³</div>
     </div>
     <div class="link"></div>
-
     <div class="input-item">
-      厚度：<input type="text" class="input-text" id="thick" placeholder="请输入厚度"/>
+      边宽：<input type="text" class="input-text" id="width" placeholder="请输入边宽"/>
       <div class="unit-text">m²</div>
     </div>
     <div class="link"></div>
-
     <div class="input-item">
-    长度：<input type="text" class="input-text" id="len" placeholder="请输入长度"/>
-      <div class="unit-text">m</div>
+      厚度：<input type="text" class="input-text" id="height" placeholder="请输入厚度"/>
+      <div class="unit-text">m²</div>
     </div>
     <div class="link"></div>
-
     <div class="input-item">
-      宽度：<input type="text" class="input-text" id="width" placeholder="请输入宽度"/>
+      长度：<input type="text" class="input-text" id="len" title="材料密度"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
@@ -75,7 +74,7 @@
   </div>
   <div class="cal-area-item">
     <a href="../caler/index.html">
-    <img class="area-img" style="height: 40px" src="../images/caler.jpg">
+      <img class="area-img" style="height: 40px" src="../images/caler.jpg">
     </a>
   </div>
 </div>
@@ -94,19 +93,19 @@
     <div class="link"></div>
 
     <div class="input-item">
-    重量：<input type="text" class="input-text" id="weight" placeholder="请输入重量"/>
+      重量：<input type="text" class="input-text" id="weight" placeholder="请输入重量"/>
       <div class="unit-text">千克</div>
     </div>
     <div class="link"></div>
 
     <div class="input-item">
-    单价：<input type="text" class="input-text" id="unitPrice"/>
+      单价：<input type="text" class="input-text" id="unitPrice"/>
       <div class="unit-text">元/吨</div>
     </div>
     <div class="link"></div>
 
     <div class="input-item">
-    总价：<input type="text" class="input-text" id="price"/>
+      总价：<input type="text" class="input-text" id="price"/>
       <div class="unit-text">元</div>
     </div>
     <div class="link"></div>

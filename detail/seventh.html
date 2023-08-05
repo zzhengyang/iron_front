@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta name="viewport" content="width=devide-width, initial-scale=1 user-scalable=0">
   <script src='common.js' type='text/javascript'></script>
@@ -9,11 +10,13 @@
       calWeightBtn.onclick=function ()
       {
         density = document.getElementById("density").value;
-        diameter = document.getElementById("diameter").value;
+        height = document.getElementById("height").value;
+        width = document.getElementById("width").value;
+        thick = document.getElementById("thick").value;
         len = document.getElementById("len").value;
-        const area = diameter * diameter;
-        var weight = calWeight(len, area, density);
-        document.getElementById("volumn").value = calVolumn(len, area);
+        const area = height * width;
+        var weight = (width + thick) * 1.2 + height * 2;
+        // document.getElementById("volumn").value = calVolumn(len, area);
         document.getElementById("weight").value = weight;
         unitPrice = document.getElementById("unitPrice").value;
         if (unitPrice > 0) {
@@ -32,21 +35,31 @@
 <div class="link"></div>
 <div>
   <form>
+<!--    <div class="input-item">-->
+<!--    材料密度： <input class="input-text" type="text"  id="density" value="7.93" />-->
+<!--    <div class="unit-text">g/m³</div>-->
+<!--    </div>-->
+<!--    <div class="link"></div>-->
     <div class="input-item">
-    材料密度： <input class="input-text" type="text"  id="density" value="0.0623" disabled="disabled"/>
-    <div class="unit-text">g/m³</div>
-    </div>
-    <div class="link"></div>
-    <div class="input-item">
-      直径：<input type="text" class="input-text" id="diameter" placeholder="请输入直径"/>
+      内直径：<input type="text" class="input-text" id="width" placeholder="请输入内直径"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-    长度：<input type="text" class="input-text" id="len" placeholder="请输入长度"/>
+      厚度：<input type="text" class="input-text" id="thick" placeholder="请输入厚度"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
+    <div class="input-item">
+      直边高度：<input type="text" class="input-text" id="height" placeholder="请输入直边高度"/>
+      <div class="unit-text">m</div>
+    </div>
+    <div class="link"></div>
+<!--    <div class="input-item">-->
+<!--    长度：<input type="text" class="input-text" id="len" placeholder="请输入长度"/>-->
+<!--      <div class="unit-text">m</div>-->
+<!--    </div>-->
+<!--    <div class="link"></div>-->
   </form>
 </div>
 <div class="cal-area">
@@ -80,11 +93,11 @@
 <div class="link"></div>
 <div>
   <form>
-    <div class="input-item">
-      体积：<input class="input-text" type="text"  id="volumn"/>
-      <div class="unit-text">m³</div>
-    </div>
-    <div class="link"></div>
+<!--    <div class="input-item">-->
+<!--      体积：<input class="input-text" type="text"  id="volumn"/>-->
+<!--      <div class="unit-text">m³</div>-->
+<!--    </div>-->
+<!--    <div class="link"></div>-->
 
     <div class="input-item">
     重量：<input type="text" class="input-text" id="weight" placeholder="请输入重量"/>
