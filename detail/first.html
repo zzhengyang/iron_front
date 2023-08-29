@@ -9,13 +9,16 @@
       var calWeightBtn=document.getElementById('calWeight');
       calWeightBtn.onclick=function ()
       {
-        density = document.getElementById("density").value;
+        densityObj = document.getElementById("density");
+        index = densityObj.selectedIndex;
+        density = densityObj.options[index].value;
         height = document.getElementById("height").value;
         width = document.getElementById("width").value;
         len = document.getElementById("len").value;
         const area = height * width;
-        var weight = calWeight(len, area, density);
         document.getElementById("volumn").value = calVolumn(len, area);
+        var weight = calWeight(len, area, density);
+
         document.getElementById("weight").value = weight;
         unitPrice = document.getElementById("unitPrice").value;
         if (unitPrice > 0) {
@@ -35,7 +38,10 @@
 <div>
   <form>
     <div class="input-item">
-    材料密度： <input class="input-text" type="text"  id="density" value="7.93" disabled="disabled"/>
+    材料密度： <select id="density">
+      <option value="7.93">不锈钢(1Cr18Ni9) #7.93</option>
+      <option value="7.85">钢材 #7.85</option>
+    </select>
     <div class="unit-text">g/m³</div>
     </div>
     <div class="link"></div>
