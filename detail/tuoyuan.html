@@ -9,19 +9,25 @@
       var calWeightBtn=document.getElementById('calWeight');
       calWeightBtn.onclick=function ()
       {
-        density = document.getElementById("density").value;
         height = document.getElementById("height").value;
         width = document.getElementById("width").value;
-        len = document.getElementById("len").value;
-        const area = height * width;
-        var weight = calWeight(len, area, density);
-        document.getElementById("volumn").value = calVolumn(len, area);
+        thick = document.getElementById("thick").value;
+        var weight = (width + thick) * 1.2 + height * 2;
         document.getElementById("weight").value = weight;
         unitPrice = document.getElementById("unitPrice").value;
         if (unitPrice > 0) {
-          document.getElementById("price").value = calMoney(len, weight);
+          document.getElementById("price").value = calMoney(unitPrice, weight);
         }
       };
+        var calPrice=document.getElementById('calPrice');
+        calPrice.onclick=function ()
+        {
+            weight = document.getElementById("weight").value;
+            unitPrice = document.getElementById("unitPrice").value;
+            if (unitPrice > 0) {
+                document.getElementById("price").value = calMoney(unitPrice, weight);
+            }
+        };
     };
   </script>
   <link rel="stylesheet" href="main.css">
@@ -35,49 +41,41 @@
 <div>
   <form>
     <div class="input-item">
-    材料密度： <input class="input-text" type="text"  id="density" value="7.93" disabled="disabled"/>
+    材料密度： <input class="input-text" type="text"  id="density" value="7.85" />
     <div class="unit-text">g/m³</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-      宽度：<input type="text" class="input-text" id="width" placeholder="请输入宽度"/>
+      内直径：<input type="text" class="input-text" id="width" placeholder="请输入内直径"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-      厚度：<input type="text" class="input-text" id="height" placeholder="请输入厚度"/>
+      厚度：<input type="text" class="input-text" id="thick" placeholder="请输入厚度"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-    长度：<input type="text" class="input-text" id="len" placeholder="请输入长度"/>
+      直边高度：<input type="text" class="input-text" id="height" placeholder="请输入直边高度"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
   </form>
 </div>
 <div class="cal-area">
-  <div class="cal-area-item" id="calWeight">
-    <img class="area-img" src="../images/cal.jpg">
-    <div>重量</div>
-  </div>
-  <div class="cal-area-item">
-    <img class="area-img" src="../images/cal.jpg">
-    <div>长度</div>
-  </div>
-  <div class="cal-area-item">
-    <img class="area-img" src="../images/set.jpg">
-    <div>长度单位</div>
-  </div>
-  <div class="cal-area-item">
-    <img class="area-img" src="../images/set.jpg">
-    <div>重量单位</div>
-  </div>
-  <div class="cal-area-item">
-    <a href="../caler/index.html">
-    <img class="area-img" style="height: 40px" src="../images/caler.jpg">
-    </a>
-  </div>
+    <div class="cal-area-item" id="calWeight">
+        <img class="area-img" src="../images/cal.jpg">
+        <div>重量</div>
+    </div>
+    <div class="cal-area-item" id="calPrice">
+        <img class="area-img" src="../images/cal.jpg">
+        <div>价格</div>
+    </div>
+    <div class="cal-area-item">
+        <a href="../caler/index.html">
+            <img class="area-img" style="height: 40px" src="../images/caler.jpg">
+        </a>
+    </div>
 </div>
 
 <div class="banner">
@@ -87,12 +85,6 @@
 <div class="link"></div>
 <div>
   <form>
-    <div class="input-item">
-      体积：<input class="input-text" type="text"  id="volumn"/>
-      <div class="unit-text">m³</div>
-    </div>
-    <div class="link"></div>
-
     <div class="input-item">
     重量：<input type="text" class="input-text" id="weight" placeholder="请输入重量"/>
       <div class="unit-text">千克</div>
@@ -111,6 +103,11 @@
     </div>
     <div class="link"></div>
   </form>
+</div>
+<div class="mark">
+    <p>计算说明:</p>
+    <p>1、计算重量：选填材料规格、长度、单价计算材料重量、总价等信息</p>
+    <p>2、计算单价：选填材料规格、长度、总价计算出单吨价格</p>
 </div>
 </body>
 </html>

@@ -8,17 +8,27 @@
       var calWeightBtn=document.getElementById('calWeight');
       calWeightBtn.onclick=function ()
       {
-        density = document.getElementById("density").value;
+        densityObj = document.getElementById("density");
+        index = densityObj.selectedIndex;
+        density = densityObj.options[index].value;
         diameter = document.getElementById("diameter").value;
-        height = document.getElementById("height").value;
-        const area = (diameter - height) * height;
         len = document.getElementById("len").value;
-        var weight = calWeight(len, area, density);
-        document.getElementById("volumn").value = calVolumn(len, area);
+        var volumn = diameter * diameter * 3.1415926 * len;
+        var weight = volumn * density * 1000;
+        document.getElementById("volumn").value = volumn
         document.getElementById("weight").value = weight;
         unitPrice = document.getElementById("unitPrice").value;
         if (unitPrice > 0) {
-          document.getElementById("price").value = calMoney(len, weight);
+          document.getElementById("price").value = calMoney(unitPrice, weight);
+        }
+      };
+      var calPrice=document.getElementById('calPrice');
+      calPrice.onclick=function ()
+      {
+        weight = document.getElementById("weight").value;
+        unitPrice = document.getElementById("unitPrice").value;
+        if (unitPrice > 0) {
+          document.getElementById("price").value = calMoney(unitPrice, weight);
         }
       };
     };
@@ -26,6 +36,7 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
+<img style="width: 100%" src="../images/yuangang_ex.JPG">
 <div class="banner">
   <div class="line"></div>
   <div class="title">输入区：</div>
@@ -34,22 +45,20 @@
 <div>
   <form>
     <div class="input-item">
-    材料密度： <input class="input-text" type="text"  id="density" value="0.02491" disabled="disabled"/>
-    <div class="unit-text">g/m³</div>
+      材料密度：<select id="density" style="width:auto">
+      <option value="7.93">不锈钢(1Cr18Ni9) #7.93</option>
+      <option value="7.85">钢材 #7.85</option>
+    </select>
+      <div class="unit-text">g/cm³</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-      外径：<input type="text" class="input-text" id="diameter" placeholder="请输入外径"/>
-      <div class="unit-text">m²</div>
+      直径：<input type="text" class="input-text" id="diameter" placeholder="请输入直径"/>
+      <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
     <div class="input-item">
-      壁厚：<input type="text" class="input-text" id="height" placeholder="请输入壁厚"/>
-      <div class="unit-text">m²</div>
-    </div>
-    <div class="link"></div>
-    <div class="input-item">
-    长度：<input type="text" class="input-text" id="len" title="材料密度"/>
+    长度：<input type="text" class="input-text" id="len" placeholder="请输入长度"/>
       <div class="unit-text">m</div>
     </div>
     <div class="link"></div>
@@ -60,17 +69,9 @@
     <img class="area-img" src="../images/cal.jpg">
     <div>重量</div>
   </div>
-  <div class="cal-area-item">
+  <div class="cal-area-item" id="calPrice">
     <img class="area-img" src="../images/cal.jpg">
-    <div>长度</div>
-  </div>
-  <div class="cal-area-item">
-    <img class="area-img" src="../images/set.jpg">
-    <div>长度单位</div>
-  </div>
-  <div class="cal-area-item">
-    <img class="area-img" src="../images/set.jpg">
-    <div>重量单位</div>
+    <div>价格</div>
   </div>
   <div class="cal-area-item">
     <a href="../caler/index.html">
@@ -110,6 +111,11 @@
     </div>
     <div class="link"></div>
   </form>
+</div>
+<div class="mark">
+  <p>计算说明:</p>
+  <p>1、计算重量：选填材料规格、长度、单价计算材料重量、总价等信息</p>
+  <p>2、计算单价：选填材料规格、长度、总价计算出单吨价格</p>
 </div>
 </body>
 </html>
